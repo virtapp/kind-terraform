@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 set -e
+source dependency.sh
 terraform init
 terraform apply -auto-approve
 
