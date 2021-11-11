@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 set -e
-
+terraform init
 terraform apply -auto-approve
 
 printf "\nWaiting for the echo web server service... \n"
