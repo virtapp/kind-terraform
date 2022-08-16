@@ -13,6 +13,6 @@ spec:
     repoURL: https://github.com/virtapp/deployment.git
     targetRevision: HEAD
   syncPolicy:
-    syncOptions:
+    automated: {}
       - CreateNamespace=true
 
