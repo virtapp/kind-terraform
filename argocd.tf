@@ -1,3 +1,4 @@
+
 resource "helm_release" "argocd" {
   name  = "argocd"
 
@@ -10,4 +11,5 @@ resource "helm_release" "argocd" {
   values = [
     file("argocd/application-apache.yaml")
   ]
+  depends_on = [kind_cluster.default]
 }
