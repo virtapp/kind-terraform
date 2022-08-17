@@ -2,6 +2,11 @@
 
 set -e
 source dependency.sh
+
+             echo      "----- ............................. -----"
+             echo         "---  LOAD-CONFIG-TERRAFORM  ---"
+             echo      "----- ............................. -----"
+             
 terraform init
 terraform apply -auto-approve
 
