@@ -18,7 +18,7 @@ resource "kind_cluster" "default" {
 
     node {
       role = "control-plane"
-      image = "kindest/node:v1.23.4"
+      #image = "kindest/node:v1.23.4"
 
       kubeadm_config_patches = [
         "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"
@@ -35,11 +35,11 @@ resource "kind_cluster" "default" {
 
     node {
       role = "worker"
-      image = "kindest/node:v1.23.4"
+      #image = "kindest/node:v1.23.4"
     }
     node {
       role = "worker"
-      image = "kindest/node:v1.23.4"
+      #image = "kindest/node:v1.23.4"
     }
   }
 }
