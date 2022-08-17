@@ -9,7 +9,7 @@ resource "helm_release" "argocd" {
   create_namespace = true
 
   values = [
-    file("argocd/application-apache.yaml")
+    file("argocd/argo-value.yaml")
   ]
   depends_on = [kind_cluster.default]
 }
