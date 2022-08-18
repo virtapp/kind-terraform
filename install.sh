@@ -20,10 +20,11 @@ sleep 10 && kubectl get pods -A && sleep 5
 sleep 5             
 kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
-kubectl apply -f ./${path_folder}/ingress-argocd.yaml
+kubectl apply -f ./${path_folder}/app-prometheus.yaml
 sleep 5
              printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'foo' as a reponse below (if you do the ingress is working):\n"
+kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 kubectl get nodes -o wide && sleep 5
 terraform providers
              echo      "----- ............................. -----"
