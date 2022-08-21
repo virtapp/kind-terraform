@@ -20,6 +20,9 @@ sleep 5
 terraform init && terraform plan
 terraform apply -auto-approve
 sleep 10 && kubectl get pods -A && sleep 5
+             echo      "----- ............................. -----"
+             echo          "---  HELM UPDATE REPO  ---"
+             echo      "----- ............................. -----"
 helm repo add bitnami https://charts.bitnami.com/bitnami || true
 helm repo add hashicorp https://helm.releases.hashicorp.com|| true
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest || true
