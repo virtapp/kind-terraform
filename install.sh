@@ -14,7 +14,7 @@ source dependency.sh
 sleep 5 && docker ps -a || true
 
              echo      "----- ............................. -----"
-             echo         "---  LOAD-CONFIG-TERRAFORM  ---"
+             echo         "---  LOAD-TERRAFORM-CONFIG  ---"
              echo      "----- ............................. -----"
 sleep 5         
 terraform init && terraform plan
