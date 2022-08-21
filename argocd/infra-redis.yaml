@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/infra-charts/redis
+    repoURL: https://github.com/virtapp/kind-terraform.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
