@@ -49,7 +49,7 @@ sleep 5
 #kubectl apply -f ./${path_charts}/app-httpd.yaml
 #kubectl apply -f ./${path_charts}/app-prometheus.yaml
              printf "\nWaiting for application will be ready... \n"
-printf "\nYou should see 'foo' as a reponse below (if you do the ingress is working):\n"
+printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress is working):\n"
              echo      "----- ............................. -----"
              echo         "---  CREATE INGRESS RULES  ---"
              echo      "----- ............................. -----"
@@ -58,7 +58,6 @@ kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 sleep 5
 kubectl get nodes -o wide && sleep 5
 terraform providers
-
              echo      "----- ............................. -----"
              echo           "---  CLUSTER IS READY  ---"
              echo      "----- ............................. -----"
