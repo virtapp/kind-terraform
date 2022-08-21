@@ -48,7 +48,7 @@ kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
 kubectl apply -f ./${path_folder}/app-prometheus.yaml
 sleep 5
-#kubectl apply -f ./${path_charts}/infra-charts/redis/app-apache.yaml
+#kubectl apply -f ./${path_charts}/infra-charts/redis/infra-redis.yaml
 #kubectl apply -f ./${path_charts}/app-httpd.yaml
 #kubectl apply -f ./${path_charts}/app-prometheus.yaml
              printf "\nWaiting for application will be ready... \n"
