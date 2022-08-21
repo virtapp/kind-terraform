@@ -24,7 +24,9 @@ kubectl apply -f ./${path_folder}/app-prometheus.yaml
 sleep 5
              printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'foo' as a reponse below (if you do the ingress is working):\n"
+kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
 kubectl apply -f ./${path_folder}/ingress-argocd.yaml
+sleep 5
 kubectl get nodes -o wide && sleep 5
 terraform providers
              echo      "----- ............................. -----"
