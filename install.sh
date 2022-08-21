@@ -12,6 +12,14 @@ sleep 5
 terraform init && terraform plan
 terraform apply -auto-approve
 sleep 10 && kubectl get pods -A && sleep 5
+helm repo add bitnami https://charts.bitnami.com/bitnami || true
+helm repo add hashicorp https://helm.releases.hashicorp.com|| true
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest || true
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts || true
+helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts || true
+helm repo add kedacore https://kedacore.github.io/charts || true
+helm repo update
+helm fetch rancher-latest/rancher --version=v2.6.2 || true
 
              echo      "----- ............................. -----"
              echo         "---  LOAD-ARGO-APPLICATIONS  ---"
@@ -27,6 +35,8 @@ printf "\nYou should see 'foo' as a reponse below (if you do the ingress is work
 kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
 kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 sleep 5
+kubectl create namespace keda || true
+helm install keda kedacore/keda --namespace keda && sleep 5
 kubectl get nodes -o wide && sleep 5
 terraform providers
              echo      "----- ............................. -----"
