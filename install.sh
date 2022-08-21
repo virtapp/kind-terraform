@@ -7,7 +7,7 @@ Typical installation of the Local Environment , the time of installation between
     2. ### Create Kubernetes Cluster
     3. ### Deploy Charts of Application  
 EOF
-export path_folder="charts"
+export path_charts="charts"
 export path_folder="argocd"
 source dependency.sh
 sleep 5 && docker ps -a || true
@@ -30,12 +30,8 @@ helm fetch rancher-latest/rancher --version=v2.6.2 || true
 kubectl create namespace cattle-system || true
 kubectl create namespace keda || true
 helm install keda kedacore/keda --namespace keda && sleep 5
-helm install rancher rancher-latest/rancher --version=v2.6.2 \
-  --namespace cattle-system \
-  --set hostname=console.centerity.com \
-  --set ingress.tls.source=centerity
 echo    Waiting for all pods in running mode:
-until kubectl wait --for=condition=Ready pods --all -n cattle-system; do
+until kubectl wait --for=condition=Ready pods --all -n keda; do
 sleep 2
 done  2>/dev/null
 
@@ -48,6 +44,9 @@ kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
 kubectl apply -f ./${path_folder}/app-prometheus.yaml
 sleep 5
+#kubectl apply -f ./${path_charts}/app-apache.yaml
+#kubectl apply -f ./${path_charts}/app-httpd.yaml
+#kubectl apply -f ./${path_charts}/app-prometheus.yaml
              printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'foo' as a reponse below (if you do the ingress is working):\n"
 kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
@@ -55,6 +54,7 @@ kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 sleep 5
 kubectl get nodes -o wide && sleep 5
 terraform providers
+
              echo      "----- ............................. -----"
              echo           "---  CLUSTER IS READY  ---"
              echo      "----- ............................. -----"
