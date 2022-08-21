@@ -7,6 +7,7 @@ Typical installation of the Local Environment , the time of installation between
     2. ### Create Kubernetes Cluster
     3. ### Deploy Charts of Application  
 EOF
+sleep 5
 export path_charts="charts"
 export path_folder="argocd"
 source dependency.sh
@@ -49,6 +50,9 @@ sleep 5
 #kubectl apply -f ./${path_charts}/app-prometheus.yaml
              printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'foo' as a reponse below (if you do the ingress is working):\n"
+             echo      "----- ............................. -----"
+             echo         "---  CREATE INGRESS RULES  ---"
+             echo      "----- ............................. -----"
 kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
 kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 sleep 5
