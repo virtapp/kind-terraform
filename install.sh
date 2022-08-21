@@ -5,7 +5,7 @@ cat <<EOF
 Typical installation of the Local Environment , the time of installation between 5-7 minutes
     1. ### Install Packages
     2. ### Create Kubernetes Cluster
-    3. ### Deploy Application  
+    3. ### Deploy Charts of Application  
 EOF
 export path_folder="charts"
 export path_folder="argocd"
