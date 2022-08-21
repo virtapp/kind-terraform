@@ -20,6 +20,10 @@ helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets
 helm repo add kedacore https://kedacore.github.io/charts || true
 helm repo update
 helm fetch rancher-latest/rancher --version=v2.6.2 || true
+helm install rancher rancher-latest/rancher --version=v2.6.2 \
+  --namespace cattle-system \
+  --set hostname=console.centerity.com \
+  --set ingress.tls.source=centerity
 
              echo      "----- ............................. -----"
              echo         "---  LOAD-ARGO-APPLICATIONS  ---"
@@ -35,6 +39,7 @@ printf "\nYou should see 'foo' as a reponse below (if you do the ingress is work
 kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
 kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 sleep 5
+kubectl create namespace cattle-system || true
 kubectl create namespace keda || true
 helm install keda kedacore/keda --namespace keda && sleep 5
 kubectl get nodes -o wide && sleep 5
