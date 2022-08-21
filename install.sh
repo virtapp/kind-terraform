@@ -27,6 +27,10 @@ helm install rancher rancher-latest/rancher --version=v2.6.2 \
   --namespace cattle-system \
   --set hostname=console.centerity.com \
   --set ingress.tls.source=centerity
+echo    Waiting for all pods in running mode:
+until kubectl wait --for=condition=Ready pods --all -n cattle-system; do
+sleep 2
+done  2>/dev/null
 
              echo      "----- ............................. -----"
              echo         "---  LOAD-ARGO-APPLICATIONS  ---"
