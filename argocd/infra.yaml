@@ -52,3 +52,61 @@ spec:
     targetRevision: HEAD
   syncPolicy:
     automated: {}
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/infra-charts/kafka
+    repoURL: https://github.com/virtapp/kind-terraform.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: influxdb
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/infra-charts/influxdb
+    repoURL: https://github.com/virtapp/kind-terraform.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elasticsearch
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/infra-charts/elasticsearch
+    targetRevision: HEAD
+    repoURL: https://github.com/virtapp/kind-terraform.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
