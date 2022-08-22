@@ -10,11 +10,14 @@ EOF
 sleep 5
 export path_charts="charts"
 export path_folder="argocd"
+             echo      "----- ............................. -----"
+             echo         "---  Install Dependencies ---"
+             echo      "----- ............................. -----"
 source dependency.sh
 sleep 5 && docker ps -a || true
 
              echo      "----- ............................. -----"
-             echo         "---  LOAD-TERRAFORM-CONFIG  ---"
+             echo         "---  LOAD-TERRAFORM-FILES  ---"
              echo      "----- ............................. -----"
 sleep 5         
 terraform init && terraform plan
