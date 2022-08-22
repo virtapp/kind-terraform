@@ -48,9 +48,9 @@ kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
 kubectl apply -f ./${path_folder}/app-prometheus.yaml
 sleep 5
-kubectl apply -f ./${path_folder}/infra-redis.yaml || true
-#kubectl apply -f ./${path_folder}/infra-redis.yaml
-#kubectl apply -f ./${path_folder}/infra-redis.yaml
+kubectl apply -f ./${path_folder}/infra.yaml || true
+#kubectl apply -f ./${path_folder}/app.yaml || true
+#kubectl apply -f ./${path_folder}/exporters.yaml || true
              printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress is working):\n"
              echo      "----- ............................. -----"
