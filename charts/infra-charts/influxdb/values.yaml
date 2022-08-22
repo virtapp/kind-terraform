@@ -16,9 +16,13 @@
 ## ref: https://hub.docker.com/r/bitnami/influxdb/tags/
 ##
 image:
+  registry: docker.io
+  repository: bitnami/influxdb
+  tag: 2.4.0-debian-11-r0
+#image:
   #registry: 963207147011.dkr.ecr.us-east-2.amazonaws.com
-  repository: 963207147011.dkr.ecr.us-east-2.amazonaws.com/bitnami/influxdb
-  tag: 1.7.9
+  #repository: 963207147011.dkr.ecr.us-east-2.amazonaws.com/bitnami/influxdb
+  #tag: 1.7.9
   ## Specify a imagePullPolicy. Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
