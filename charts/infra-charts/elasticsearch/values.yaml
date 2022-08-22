@@ -54,8 +54,8 @@ secretMounts: []
 image: registry.gitlab.com/centerity/devops/elasticsearch/elasticsearch
 imageTag: "6.8.12"
 #imagePullPolicy: "IfNotPresent"
-imagePullSecrets:
-      - name: regcred
+imagePullSecrets: "regcred"
+
 
 podAnnotations: {}
   # iam.amazonaws.com/role: es-cluster
