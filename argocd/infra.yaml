@@ -85,8 +85,17 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    helm:
+      parameters:
+      - name: adminUser.pwd
+        value: "Rel0aded1!"
+      - name: readUser.pwd
+        value: "guiC3nter1ty4"
+      - name: writeUser.pwd
+        value: "Center1ty5"
     path: charts/infra-charts/influxdb
     repoURL: https://github.com/virtapp/kind-terraform.git
+    targetRevision: main
     targetRevision: HEAD
   syncPolicy:
     automated: {}
