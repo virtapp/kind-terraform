@@ -51,11 +51,11 @@ secretMounts: []
 #    path: /usr/share/elasticsearch/config/certs
 #    defaultMode: 0755
 
-image: "registry.gitlab.com/centerity/devops/elasticsearch/elasticsearch"
+image: registry.gitlab.com/centerity/devops/elasticsearch/elasticsearch
 imageTag: "6.8.12"
 #imagePullPolicy: "IfNotPresent"
-imagePullSecrets: "regcred"
-
+imagePullSecrets:
+      - name: regcred
 
 podAnnotations: {}
   # iam.amazonaws.com/role: es-cluster
