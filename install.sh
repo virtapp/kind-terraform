@@ -33,6 +33,7 @@ helm repo update && sleep 5
 helm fetch rancher-latest/rancher --version=v2.6.2 || true
 kubectl create namespace cattle-system || true
 kubectl create namespace keda || true
+helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver || true
 helm install keda kedacore/keda --namespace keda && sleep 5
 echo    Waiting for all pods in running mode:
 until kubectl wait --for=condition=Ready pods --all -n keda; do
@@ -43,7 +44,7 @@ done  2>/dev/null
              echo         "---  LOAD-ARGO-APPLICATIONS  ---"
              echo      "----- ............................. -----"
              
-sleep 5             
+sleep 5           
 #kubectl apply -f ./${path_folder}/app-apache.yaml
 #kubectl apply -f ./${path_folder}/app-httpd.yaml
 kubectl apply -f ./${path_folder}/app-prometheus.yaml
