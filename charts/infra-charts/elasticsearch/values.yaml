@@ -51,7 +51,7 @@ secretMounts: []
 #    path: /usr/share/elasticsearch/config/certs
 #    defaultMode: 0755
 
-image: "963207147011.dkr.ecr.us-east-2.amazonaws.com/elasticsearch/elasticsearch"
+image: "registry.gitlab.com/centerity/devops/elasticsearch/elasticsearch"
 imageTag: "6.8.12"
 imagePullPolicy: "IfNotPresent"
 
