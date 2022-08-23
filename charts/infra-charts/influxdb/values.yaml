@@ -17,7 +17,7 @@
 ##
 image:
   #registry: 963207147011.dkr.ecr.us-east-2.amazonaws.com
-  repository: 963207147011.dkr.ecr.us-east-2.amazonaws.com/bitnami/influxdb
+  repository: bitnami/influxdb
   tag: 1.7.9
   ## Specify a imagePullPolicy. Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
