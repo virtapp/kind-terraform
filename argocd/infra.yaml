@@ -50,7 +50,9 @@ spec:
     helm:
       parameters:
       - name: auth.rootPassword
-        value: "$MARIADB_ROOT_PASSWORD"
+        value: "123456abc"
+      - name: INFLUXDB_ADMIN_USER_PASSWORD
+        value: "123456abc"
     path: charts/infra-charts/mariadb
     repoURL: https://github.com/virtapp/kind-terraform.git
     targetRevision: HEAD
