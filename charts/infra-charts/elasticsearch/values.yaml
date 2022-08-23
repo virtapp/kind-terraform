@@ -55,6 +55,7 @@ image: docker.io/bitnami/elasticsearch
 imageTag: "8.3.3-debian-11-r5"
 imagePullPolicy: "IfNotPresent"
 
+
 podAnnotations: {}
   # iam.amazonaws.com/role: es-cluster
 
