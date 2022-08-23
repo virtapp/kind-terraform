@@ -50,7 +50,7 @@ spec:
     helm:
       parameters:
       - name: auth.rootPassword
-        value: "123456abc"
+        value: "$MARIADB_ROOT_PASSWORD"
     path: charts/infra-charts/mariadb
     repoURL: https://github.com/virtapp/kind-terraform.git
     targetRevision: HEAD
