@@ -4,5 +4,12 @@ resource "kubernetes_namespace" "centerity" {
   metadata {
     name = var.namespace
   }
+    depends_on = [kind_cluster.default]
 }
 
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = var.namespace
+  }
+    depends_on = [kind_cluster.default]
+}
