@@ -23,3 +23,9 @@ variable "ingress_nginx_namespace" {
   description = "The nginx ingress namespace (it will be created if needed)."
   default     = "ingress-nginx"
 }
+
+variable "namespace" {
+  type        = string
+  description = "The nginx ingress namespace (it will be created if needed)."
+  default     = "centerity"
+}
