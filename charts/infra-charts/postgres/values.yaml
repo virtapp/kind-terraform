@@ -9,8 +9,8 @@
 ##
 image:
   #repository: bitnami/postgresql
-  repository: 963207147011.dkr.ecr.us-east-2.amazonaws.com/bitnami/postgresql
-  tag: 12.1.0
+  repository: bitnami/postgresql
+  tag: 14.5.0-debian-11-r3
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
