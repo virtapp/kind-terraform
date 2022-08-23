@@ -7,12 +7,11 @@ replicas: 1
 
 masternodeIP: ""
 
-## The kafka image repository
-image: "confluentinc/cp-kafka"
-#registry: us-ashburn-1.ocir.io/idgj4r840lzj/centerity-saas/
-
-## The kafka image tag
-imageTag: "5.0.1"  # Confluent image for Kafka 2.0.0
+image:
+  registry: docker.io
+  repository: bitnami/kafka
+  tag: 3.2.1-debian-11-r4
+  digest: ""
 
 ## Specify a imagePullPolicy
 ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
