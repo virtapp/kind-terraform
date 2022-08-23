@@ -53,6 +53,7 @@ kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
 #kubectl apply -f ./${path_folder}/app-prometheus.yaml
 sleep 5
+kubectl create namespace centerity || true
 kubectl apply -f ./${path_folder}/infra.yaml || true
 #kubectl apply -f ./${path_folder}/app.yaml || true
 #kubectl apply -f ./${path_folder}/exporters.yaml || true
