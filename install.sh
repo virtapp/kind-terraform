@@ -23,9 +23,11 @@ sleep 5
 terraform init && terraform plan
 terraform apply -auto-approve
 sleep 10 && kubectl get pods -A && sleep 5
+
              echo      "----- ............................. -----"
              echo          "---  HELM UPDATE REPO  ---"
              echo      "----- ............................. -----"
+             
 helm repo add bitnami https://charts.bitnami.com/bitnami || true
 helm repo add hashicorp https://helm.releases.hashicorp.com|| true
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest || true
@@ -45,8 +47,7 @@ done  2>/dev/null
 
              echo      "----- ............................. -----"
              echo         "---  LOAD-ARGO-APPLICATIONS  ---"
-             echo      "----- ............................. -----"
-             
+             echo      "----- ............................. -----"           
 sleep 5           
 kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
@@ -57,9 +58,11 @@ kubectl apply -f ./${path_folder}/infra.yaml || true
 #kubectl apply -f ./${path_folder}/exporters.yaml || true
              printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress is working):\n"
+
              echo      "----- ............................. -----"
              echo         "---  CREATE INGRESS RULES  ---"
              echo      "----- ............................. -----"
+             
 kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
 kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 sleep 5
