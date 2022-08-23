@@ -21,9 +21,10 @@ updateStrategy:
 ## - https://github.com/kubernetes/contrib/tree/master/statefulsets/zookeeper
 ## - https://github.com/kubernetes/contrib/blob/master/statefulsets/zookeeper/Makefile#L1
 image:
-  repository: registry.gitlab.com/centerity/devops/google_samples/k8szk
-  tag: v3  # Container image tag for zookeeper container.
-  pullPolicy: IfNotPresent  # Image pull criteria for zookeeper container.
+  registry: docker.io
+  repository: bitnami/zookeeper
+  tag: 3.8.0-debian-11-r30
+  digest: ""
 
 service:
   type: ClusterIP  # Exposes zookeeper on a cluster-internal IP.
