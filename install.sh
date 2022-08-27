@@ -2,6 +2,7 @@
 
 set -e
 cat <<EOF
+
 Typical installation of the Local Environment , the time of installation between 5-7 minutes
     1. ### Install Packages
     2. ### Create Kubernetes Cluster
