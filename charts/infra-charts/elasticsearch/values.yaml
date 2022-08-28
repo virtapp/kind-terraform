@@ -55,6 +55,7 @@ image: "registry.gitlab.com/centerity/devops/elasticsearch/elasticsearch"
 imageTag: "6.8.12"
 imagePullPolicy: "IfNotPresent"
 
+
 podAnnotations: {}
   # iam.amazonaws.com/role: es-cluster
 
@@ -224,7 +225,7 @@ clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
 schedulerName: ""
 
 imagePullSecrets:
-- name: regcredinfra
+- name: regcred
 nodeSelector: {}
 # nodeSelector:
 #   dedicated: master
