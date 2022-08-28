@@ -51,10 +51,9 @@ secretMounts: []
 #    path: /usr/share/elasticsearch/config/certs
 #    defaultMode: 0755
 
-image: docker.io/bitnami/elasticsearch
-imageTag: "8.3.3-debian-11-r5"
+image: "registry.gitlab.com/centerity/devops/elasticsearch/elasticsearch"
+imageTag: "6.8.12"
 imagePullPolicy: "IfNotPresent"
-
 
 podAnnotations: {}
   # iam.amazonaws.com/role: es-cluster
@@ -224,7 +223,8 @@ clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
 ##
 schedulerName: ""
 
-imagePullSecrets: []
+imagePullSecrets:
+- name: regcredinfra
 nodeSelector: {}
 # nodeSelector:
 #   dedicated: master
