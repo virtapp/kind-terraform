@@ -24,7 +24,7 @@ spec:
             defaultMode: 0744
       containers:
         - name: {{ template "kafka.fullname" . }}-config
-          image: "{{ .Values.global.registry }}{{ .Values.image }}:{{ .Values.imageTag }}"
+          image: "{{ .Values.image }}:{{ .Values.imageTag }}"
           command: ["/usr/local/script/runtimeConfig.sh"]
           volumeMounts:
             - name: config-volume
