@@ -54,7 +54,6 @@ kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
 sleep 5 && 
 kubectl create namespace centerity || true
-kubectl apply -f ./${path_folder}/secret.yaml || true
 kubectl apply -f ./${path_folder}/infra.yaml || true
 #kubectl apply -f ./${path_folder}/app.yaml || true
              printf "\nWaiting for application will be ready... \n"
