@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: elasticsearch-create-mappings
-        image: elasticsearch/elasticsearch:6.8.12
+        image: elasticsearch:6.8.12
         command: ["/bin/sh", "-c"]
         args: ["/usr/bin/sleep 120;
          /usr/bin/curl -f -XDELETE --url http://elasticsearch-master.centerity.svc.cluster.local:9200/eventlog ;
