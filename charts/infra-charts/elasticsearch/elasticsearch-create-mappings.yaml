@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: elasticsearch-create-mappings
+spec:
+  template:
+    spec:
+      containers:
+      - name: elasticsearch-create-mappings
+        image: elasticsearch:6.8.12
+        command: ["/bin/sh", "-c"]
+        args: ["/usr/bin/sleep 120;
+         /usr/bin/curl -f -XDELETE --url http://elasticsearch-master.centerity.svc.cluster.local:9200/eventlog ;
+         /usr/bin/sleep 5;
+         /usr/bin/curl -f -XDELETE --url http://elasticsearch-master.centerity.svc.cluster.local:9200/discovery;
+         /usr/bin/sleep 5;
+         /usr/bin/curl -f -XDELETE --url http://elasticsearch-master.centerity.svc.cluster.local:9200/notifications;
+         /usr/bin/sleep 5;
+         /usr/bin/curl -XPUT --url http://elasticsearch-master.centerity.svc.cluster.local:9200/_template/eventlog --header 'content-type: application/json' -d '{ \"template\": [\"eventlog\"], \"index_patterns\" : [\"eventlog*\"], \"settings\": { \"number_of_shards\": 1 }, \"mappings\": { \"event\": { \"properties\": { \"action\": { \"type\": \"keyword\" }, \"entity_id\": { \"type\": \"keyword\" }, \"entity_name\": { \"type\": \"keyword\" }, \"interface\": { \"type\": \"keyword\" }, \"ip\": { \"type\": \"keyword\" }, \"page_name\": { \"type\": \"keyword\" }, \"parameters\": { \"type\": \"text\", \"fielddata\": true }, \"time_action\": { \"type\": \"date\" }, \"timestamp\": { \"type\": \"long\" }, \"token\": { \"type\": \"keyword\" }, \"username\": { \"type\": \"keyword\" } } } } }';  
+         /usr/bin/sleep 5;
+         /usr/bin/curl -XPUT --url http://elasticsearch-master.centerity.svc.cluster.local:9200/eventlog ;
+         /usr/bin/sleep 5;
+         /usr/bin/curl -XPUT --url http://elasticsearch-master.centerity.svc.cluster.local:9200/discovery --header 'content-type: application/json' -d '{\"mappings\": {\"hosts\": {\"properties\": {\"timestamp\": {\"type\": \"date\"},\"scan_id\": {\"type\": \"integer\"},\"ip_address\": {\"type\": \"keyword\"}}}}}';
+         /usr/bin/sleep 5;
+         /usr/bin/curl -XPUT --url http://elasticsearch-master.centerity.svc.cluster.local:9200/_template/notifications --header 'content-type: application/json' -d '{ \"template\": [\"notifications-*\"], \"index_patterns\" : [\"notifications-*\"], \"settings\": { \"number_of_shards\": 1 }, \"mappings\": { \"notifications\": { \"properties\": { \"command\": { \"type\": \"keyword\" }, \"contact\": { \"type\": \"keyword\" }, \"host_name\": { \"type\": \"keyword\" }, \"is_host\": { \"type\": \"long\" }, \"metric\": { \"type\": \"keyword\" }, \"page_name\": { \"type\": \"keyword\" }, \"output\": { \"type\": \"text\", \"fielddata\": true }, \"status\": { \"type\": \"keyword\" }, \"timestamp\": { \"type\": \"date\" }, \"metric_name\": { \"type\": \"keyword\" } } } } }'"]
+      restartPolicy: Never
+  backoffLimit: 4
+
