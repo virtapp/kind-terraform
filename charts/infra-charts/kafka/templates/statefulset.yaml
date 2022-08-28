@@ -32,6 +32,9 @@ spec:
         app: {{ include "kafka.name" . }}
         release: {{ .Release.Name }}
     spec:
+{{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | indent 8 }}
+{{- end }}
 {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
 {{- end }}
