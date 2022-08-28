@@ -126,8 +126,8 @@ spec:
   project: default
   source:
     path: charts/infra-charts/elasticsearch
-    targetRevision: HEAD
     repoURL: https://github.com/virtapp/kind-terraform.git
+    targetRevision: main
     targetRevision: HEAD
   syncPolicy:
     automated: {}
