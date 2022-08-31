@@ -24,14 +24,3 @@ variable "ingress_nginx_namespace" {
   default     = "ingress-nginx"
 }
 
-variable "devtron_helm_version" {
-  type        = string
-  description = "The Helm version for the nginx ingress controller."
-  default     = "0.22.26"
-}
-
-variable "devtron_namespace" {
-  type        = string
-  description = "The nginx ingress namespace (it will be created if needed)."
-  default     = "devtroncd"
-}
