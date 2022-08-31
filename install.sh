@@ -49,14 +49,14 @@ done  2>/dev/null
              echo      "----- ............................. -----"
              echo         "---  LOAD-ARGO-APPLICATIONS  ---"
              echo      "----- ............................. -----"           
-sleep 5           
+sleep 5 &&           
 kubectl apply -f ./${path_folder}/app-apache.yaml
 kubectl apply -f ./${path_folder}/app-httpd.yaml
 sleep 5 && 
 kubectl create namespace centerity || true
 kubectl apply -f ./${path_folder}/secret.yaml || true
 kubectl apply -f ./${path_folder}/infra.yaml || true
-             printf "\nWaiting for application will be ready... \n"
+               printf "\nWaiting for application will be ready... \n"
 printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress is working):\n"
 
              echo      "----- ............................. -----"
@@ -66,9 +66,10 @@ printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress i
 kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
 kubectl apply -f ./${path_folder}/ingress-argocd.yaml
 kubectl apply -f ./${path_folder}/ingress-devtron.yaml
-sleep 5
+sleep 5 && 
 kubectl get nodes -o wide && sleep 5
 terraform providers
+
              echo      "----- ............................. -----"
              echo           "---  CLUSTER IS READY  ---"
              echo      "----- ............................. -----"
