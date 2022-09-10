@@ -38,6 +38,11 @@ helm repo add kedacore https://kedacore.github.io/charts || true
 helm repo update && sleep 5
 helm fetch rancher-latest/rancher --version=v2.6.2 || true
 kubectl create namespace cattle-system || true
+helm install rancher rancher-latest/rancher --version=v2.6.2 \
+  --namespace cattle-system \
+  --set hostname=console.appflex.io \
+  --set ingress.tls.source=appflex
+  --set replicas=1
 kubectl create namespace keda || true
 helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver || true
 helm install keda kedacore/keda --namespace keda && sleep 5
