@@ -41,8 +41,9 @@ kubectl create namespace cattle-system || true
 helm install rancher rancher-latest/rancher --version=v2.6.2 \
   --namespace cattle-system \
   --set hostname=console.appflex.io \
-  --set ingress.tls.source=appflex
-  --set replicas=1
+  --set ingress.tls.source=appflex \
+  --set replicas=1 \
+  --set bootstrapPassword="admin"
 kubectl create namespace keda || true
 helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver || true
 helm install keda kedacore/keda --namespace keda && sleep 5
