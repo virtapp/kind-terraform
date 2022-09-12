@@ -37,10 +37,15 @@ resource "helm_release" "rancher_server" {
   create_namespace = true
   wait             = true
   depends_on = [kind_cluster.default]
-  
+
   set {
     name  = "hostname"
     value = var.rancher_server_dns
+  }
+
+  set {
+    name  = "ingress.tls.source"
+    value = "centerity"
   }
 
   set {
