@@ -24,3 +24,15 @@ variable "ingress_nginx_namespace" {
   default     = "ingress-nginx"
 }
 
+variable "rancher_version" {
+  type        = string
+  description = "Rancher server version (format v0.0.0)"
+  default     = "2.6.8"
+}
+
+# Required
+variable "rancher_server_dns" {
+  type        = string
+  description = "DNS host name of the Rancher server"
+  default     = "console.centerity.com"
+}
