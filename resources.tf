@@ -30,16 +30,14 @@ resource "helm_release" "grafana" {
 
 ###-rancher
 resource "helm_release" "rancher_server" {
-  depends_on = [
-    kind_cluster.default,
-  ]
 
   name             = "rancher"
   chart            = "https://releases.rancher.com/server-charts/latest/rancher-${var.rancher_version}.tgz"
   namespace        = "cattle-system"
   create_namespace = true
   wait             = true
-
+  depends_on = [kind_cluster.default]
+  
   set {
     name  = "hostname"
     value = var.rancher_server_dns
