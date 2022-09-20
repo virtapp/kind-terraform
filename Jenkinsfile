@@ -28,7 +28,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'adi-cerd', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "yum install git -y && cd /tmp && git clone -b centos https://DEVOPS-TOKEN-global:5wqbyxU8YMfK7VNosPkt@gitlab.com/centerity/global-deployment.git"
+                        sshCommand remote: remote, command: "apt-get install git -y && cd /tmp && git clone -b main https://github.com/virtapp/kind-terraform.git"
                     }
                 }
            }
@@ -44,7 +44,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'adi-cerd', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "cd /tmp/global-deployment && bash install.sh"
+                        sshCommand remote: remote, command: "cd /tmp/kind-terraform && bash install.sh"
                     }
                 }
            }
