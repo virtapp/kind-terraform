@@ -28,7 +28,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'user-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "apt-get install git -y && cd /tmp && git clone -b main https://github.com/virtapp/kind-terraform.git"
+                        sshCommand remote: remote, command: "cd /tmp && git clone -b main https://github.com/virtapp/kind-terraform.git"
                     }
                 }
            }
