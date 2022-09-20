@@ -1,6 +1,7 @@
 #!/bin/bash
 
-apt-get update -y && apt-get install docker.io -y
+#sudo apt-get update -y && sudo apt-get install docker.io -y
+sudo apt-get install docker.io -y
 sleep 5
    echo    "----- ..................................................... -----"
    echo      "----- ...............   TERRAFORM .................... -----"
