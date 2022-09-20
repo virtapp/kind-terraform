@@ -5,13 +5,14 @@ resource "helm_release" "keycloak" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "keycloak"
   create_namespace = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.rancher_server]
 
   set {
     name  = "service.type"
     value = "ClusterIP"
   }
 }
+
 
 ###-grafana
 resource "helm_release" "grafana" {
@@ -20,13 +21,14 @@ resource "helm_release" "grafana" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "grafana"
   create_namespace = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.rancher_server]
 
   set {
     name  = "service.type"
     value = "ClusterIP"
   }
 }
+
 
 ###-rancher
 resource "helm_release" "rancher_server" {
@@ -59,6 +61,7 @@ resource "helm_release" "rancher_server" {
   }
 }
 
+
 ###-keda
 resource "helm_release" "keda" {
   name = "keda"
@@ -69,8 +72,9 @@ resource "helm_release" "keda" {
   atomic     = true
   create_namespace = true
 
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.rancher_server]
 }
+
 
 ###-vault
 resource "helm_release" "vault" {
@@ -79,7 +83,7 @@ resource "helm_release" "vault" {
   namespace        = "vault"
   create_namespace = true
   repository       = "https://helm.releases.hashicorp.com"
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.rancher_server]
   values = [
     file("argocd/vault-values.yaml")
   ]
