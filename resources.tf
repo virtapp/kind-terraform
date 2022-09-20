@@ -58,3 +58,29 @@ resource "helm_release" "rancher_server" {
     value = "admin" # TODO: change this once the terraform provider has been updated with the new pw bootstrap logic
   }
 }
+
+###-keda
+resource "helm_release" "keda" {
+  name = "keda"
+
+  repository = "https://kedacore.github.io/charts"
+  chart      = "keda"
+  namespace  = "keda"
+  atomic     = true
+  create_namespace = true
+
+  depends_on = [kind_cluster.default]
+}
+
+###-vault
+resource "helm_release" "vault" {
+  chart            = "vault"
+  name             = "vault"
+  namespace        = "vault"
+  create_namespace = true
+  repository       = "https://helm.releases.hashicorp.com"
+  depends_on = [kind_cluster.default]
+  values = [
+    file("argocd/vault-values.yaml")
+  ]
+}
