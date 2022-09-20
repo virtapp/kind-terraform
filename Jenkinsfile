@@ -12,7 +12,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'user-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "rm -rf /tmp/global-deployment"
+                        sshCommand remote: remote, command: "rm -rf /tmp/kind-terraform"
                     }
                 }
            }
