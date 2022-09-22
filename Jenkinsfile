@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "ubuntu"
+                    remote.name = "root"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
@@ -21,14 +21,14 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "ubuntu"
+                    remote.name = "root"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
                     withCredentials([usernamePassword(credentialsId: 'user-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "cd /tmp && git clone -b main https://github.com/virtapp/kind-terraform.git"
+                        sshCommand remote: remote, command: "apt-get update && cd /tmp && https://github.com/virtapp/kind-terraform.git"
                     }
                 }
            }
@@ -37,14 +37,30 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "ubuntu"
+                    remote.name = "root"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
                     withCredentials([usernamePassword(credentialsId: 'user-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "cd /tmp/kind-terraform && bash install.sh"
+                        sshCommand remote: remote, command: "cd /tmp/kind-terraform/ && bash install.sh"
+                    }
+                }
+           }
+        }
+        stage ('Get Ingress') {
+            steps {
+                script{
+                    remote = [:]
+                    remote.name = "root"
+                    remote.host = params.IP_ADDRESS
+                    remote.allowAnyHosts = true
+                    remote.failOnError = true
+                    withCredentials([usernamePassword(credentialsId: 'user-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        remote.user = params.LINUX_USER
+                        remote.password = params.LINUX_PASS
+                        sshCommand remote: remote, command: "kubectl get ingress -A"
                     }
                 }
            }
