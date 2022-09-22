@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "root"
+                    remote.name = "ubuntu"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
@@ -21,14 +21,14 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "root"
+                    remote.name = "ubuntu"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
                     withCredentials([usernamePassword(credentialsId: 'user-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
                         remote.user = params.LINUX_USER
                         remote.password = params.LINUX_PASS
-                        sshCommand remote: remote, command: "apt-get update && cd /tmp && https://github.com/virtapp/kind-terraform.git"
+                        sshCommand remote: remote, command: "apt-get update && cd /tmp && git clone https://github.com/virtapp/kind-terraform.git"
                     }
                 }
            }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "root"
+                    remote.name = "ubuntu"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 script{
                     remote = [:]
-                    remote.name = "root"
+                    remote.name = "ubuntu"
                     remote.host = params.IP_ADDRESS
                     remote.allowAnyHosts = true
                     remote.failOnError = true
