@@ -38,7 +38,7 @@ resource "helm_release" "rancher_server" {
   namespace        = "cattle-system"
   create_namespace = true
   wait             = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.ingress_nginx]
 
   set {
     name  = "hostname"
