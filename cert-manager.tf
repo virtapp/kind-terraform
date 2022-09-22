@@ -7,7 +7,7 @@ resource "helm_release" "cert-manager" {
   namespace        = "cert-manager"
   create_namespace = true
   #values = [file("cert-manager-values.yaml")]
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd]
   set {
     name  = "installCRDs"
     value = "true"
