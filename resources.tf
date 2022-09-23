@@ -5,7 +5,7 @@ resource "helm_release" "keycloak" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "keycloak"
   create_namespace = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd,kind_cluster.default]]
 
   set {
     name  = "service.type"
@@ -21,7 +21,7 @@ resource "helm_release" "grafana" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "grafana"
   create_namespace = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd,kind_cluster.default]
 
   set {
     name  = "service.type"
@@ -40,7 +40,7 @@ resource "helm_release" "keda" {
   atomic     = true
   create_namespace = true
 
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd,kind_cluster.default]
 }
 
 
@@ -51,7 +51,7 @@ resource "helm_release" "vault" {
   namespace        = "vault"
   create_namespace = true
   repository       = "https://helm.releases.hashicorp.com"
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd,kind_cluster.default]
   values = [
     file("argocd/vault-values.yaml")
   ]
