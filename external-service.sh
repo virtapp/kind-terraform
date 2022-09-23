@@ -52,9 +52,9 @@ metadata:
     
 spec:
   tls:
-  - secretName: centerity
+  - secretName: appflex
   rules:
-  - host: ${DOMAIN_NAME}.centerity.com
+  - host: ${DOMAIN_NAME}.appflex.io
     http:
       paths:
       - backend:
