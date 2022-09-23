@@ -25,7 +25,7 @@ resource "null_resource" "wait_for_argocd" {
       kubectl wait --namespace ${helm_release.argocd.namespace} \
         --for=condition=ready pod \
         --selector=app.kubernetes.io/component=server \
-        --timeout=120s
+        --timeout=60s
     EOF
   }
 
