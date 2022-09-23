@@ -21,11 +21,11 @@ resource "null_resource" "wait_for_argocd" {
 
   provisioner "local-exec" {
     command = <<EOF
-      printf "\nWaiting for the argocd controller...\n"
+      printf "\nWaiting for the argocd controller will be installed...\n"
       kubectl wait --namespace ${helm_release.argocd.namespace} \
         --for=condition=ready pod \
         --selector=app.kubernetes.io/component=server \
-        --timeout=90s
+        --timeout=120s
     EOF
   }
 
