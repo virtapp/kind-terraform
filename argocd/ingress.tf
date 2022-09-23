@@ -34,7 +34,7 @@ resource "kubernetes_ingress" "ingress-route-argo" {
       }
      }
       tls {
-      secret_name = "centerity"
+      secret_name = "appflex"
     }
   }
    depends_on = [helm_release.argocd,helm_release.ingress_nginx]
