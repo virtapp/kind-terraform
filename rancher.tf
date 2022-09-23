@@ -26,7 +26,7 @@ resource "helm_release" "rancher_server" {
 
   set {
     name  = "bootstrapPassword"
-    value = "admin" # TODO: change this once the terraform provider has been updated with the new pw bootstrap logic
+    value = "admin"
   }
 }
 
