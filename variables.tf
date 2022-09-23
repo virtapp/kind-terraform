@@ -3,7 +3,7 @@
 variable "kind_cluster_name" {
   type        = string
   description = "The name of the cluster."
-  default     = "demo-local"
+  default     = "local-cluster"
 }
 
 variable "kind_cluster_config_path" {
@@ -42,5 +42,5 @@ variable "rancher_server_dns" {
 variable "admin_password" {
   type        = string
   description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
-  default     = "q1w2e3r4100@"
+  default     = "admin"
 }
