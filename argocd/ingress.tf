@@ -1,9 +1,12 @@
-resource "kubernetes_ingress" "rudeckpro_nginx" {
+###-ingress-argocd
+resource "kubernetes_ingress" "ingress-route-argo" {
   metadata {
-    name = "rudeckpro-nginx"
-
+    name = "ingress-route-argo"
+    namespace = "argocd"
     annotations = {
       "kubernetes.io/ingress.class" = "nginx"
+
+      "nginx.ingress.kubernetes.io/backend-protocol" =  "HTTPS"
 
       "nginx.ingress.kubernetes.io/affinity" = "cookie"
 
@@ -17,18 +20,22 @@ resource "kubernetes_ingress" "rudeckpro_nginx" {
 
   spec {
     rule {
-      host = "localhost"
+      host = "argo.appflex.io"
 
       http {
         path {
           path = "/"
 
           backend {
-            service_name = "rundeckpro"
-            service_port = "8080"
+            service_name = "argocd-server"
+            service_port = "80"
           }
         }
       }
+     }
+      tls {
+      secret_name = "centerity"
     }
   }
+   depends_on = [helm_release.argocd,helm_release.ingress_nginx]
 }
