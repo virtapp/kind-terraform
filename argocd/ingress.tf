@@ -1,4 +1,3 @@
-###-ingress-argocd
 resource "kubernetes_ingress" "ingress-route-argo" {
   metadata {
     name = "ingress-route-argo"
@@ -20,7 +19,7 @@ resource "kubernetes_ingress" "ingress-route-argo" {
 
   spec {
     rule {
-      host = "argo.appflex.io"
+      host = "argo.centerity.com"
 
       http {
         path {
@@ -34,8 +33,14 @@ resource "kubernetes_ingress" "ingress-route-argo" {
       }
      }
       tls {
-      secret_name = "appflex"
+      secret_name = "centerity"
     }
   }
-   depends_on = [helm_release.argocd,helm_release.ingress_nginx]
+  # depends_on = [helm_release.argocd]
+}
+
+
+# Display load balancer hostname (typically present in local cluster)
+output "load_balancer_hostname" {
+  value = kubernetes_ingress.ingress-route-argo.status.0.load_balancer.0.ingress.0.hostname
 }
