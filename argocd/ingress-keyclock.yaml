@@ -18,10 +18,10 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "5m"
 spec:
   tls:
-  - secretName: centerity
+  - secretName: appflex
   rules:
 
-  - host: auth.centerity.com
+  - host: auth.appflex.io
     http:
       paths:
       - backend:
