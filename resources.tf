@@ -5,13 +5,14 @@ resource "helm_release" "keycloak" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "keycloak"
   create_namespace = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd,kind_cluster.default]
 
   set {
     name  = "service.type"
     value = "ClusterIP"
   }
 }
+
 
 ###-grafana
 resource "helm_release" "grafana" {
@@ -20,7 +21,7 @@ resource "helm_release" "grafana" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "grafana"
   create_namespace = true
-  depends_on = [kind_cluster.default]
+  depends_on = [helm_release.argocd,kind_cluster.default]
 
   set {
     name  = "service.type"
@@ -28,19 +29,30 @@ resource "helm_release" "grafana" {
   }
 }
 
-###-devtron
-resource "helm_release" "devtron" {
-  name       = "devtron"
-  repository = "https://helm.devtron.ai"
-  chart      = "devtron-operator"
-  version    = var.devtron_helm_version
 
-  namespace        = var.devtron_namespace
+###-keda
+resource "helm_release" "keda" {
+  name = "keda"
+
+  repository = "https://kedacore.github.io/charts"
+  chart      = "keda"
+  namespace  = "keda"
+  atomic     = true
   create_namespace = true
 
-  values = [file("argocd/devtron.yaml")]
+  depends_on = [helm_release.argocd,kind_cluster.default]
+}
 
-  timeout = 600000
 
-  depends_on = [kind_cluster.default]
+###-vault
+resource "helm_release" "vault" {
+  chart            = "vault"
+  name             = "vault"
+  namespace        = "vault"
+  create_namespace = true
+  repository       = "https://helm.releases.hashicorp.com"
+  depends_on = [helm_release.argocd,kind_cluster.default]
+  values = [
+    file("argocd/vault-values.yaml")
+  ]
 }

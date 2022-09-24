@@ -3,7 +3,7 @@
 variable "kind_cluster_name" {
   type        = string
   description = "The name of the cluster."
-  default     = "demo-local"
+  default     = "local-cluster"
 }
 
 variable "kind_cluster_config_path" {
@@ -24,14 +24,23 @@ variable "ingress_nginx_namespace" {
   default     = "ingress-nginx"
 }
 
-variable "devtron_helm_version" {
+# Required
+variable "rancher_version" {
   type        = string
-  description = "The Helm version for the nginx ingress controller."
-  default     = "0.22.26"
+  description = "Rancher server version (format v0.0.0)"
+  default     = "2.6.8"
 }
 
-variable "devtron_namespace" {
+# Required
+variable "rancher_server_dns" {
   type        = string
-  description = "The nginx ingress namespace (it will be created if needed)."
-  default     = "devtroncd"
+  description = "DNS host name of the Rancher server"
+  default     = "console.centerity.com"
+}
+
+# Required
+variable "admin_password" {
+  type        = string
+  description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
+  default     = "admin"
 }
