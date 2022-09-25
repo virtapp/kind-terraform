@@ -35,13 +35,13 @@ resource "null_resource" "wait_for_argocd" {
 
 resource "null_resource" "ingress-route-argo" {
   provisioner "local-exec" {
-    command = "kubectl apply -f ./argocd/ingress-argocd.yaml -n ${helm_release.argocd.namespace}"
+    command = "kubectl apply -f argocd/ingress-argocd.yaml -n ${helm_release.argocd.namespace}"
     working_dir = path.module
   }
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete -f ./argocd/ingress-argocd.yaml -n argocd"
+    command = "kubectl delete -f argocd/ingress-argocd.yaml -n argocd"
     working_dir = path.module
   }
 }
