@@ -44,3 +44,12 @@ variable "admin_password" {
   description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
   default     = "admin"
 }
+
+# Required
+variable "charts_path" {
+  default     = "./charts/infra-charts"
+  description = "The charts full path"
+}
+
+
+#
