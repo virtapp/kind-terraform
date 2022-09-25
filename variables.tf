@@ -24,32 +24,4 @@ variable "ingress_nginx_namespace" {
   default     = "ingress-nginx"
 }
 
-# Required
-variable "rancher_version" {
-  type        = string
-  description = "Rancher server version (format v0.0.0)"
-  default     = "2.6.8"
-}
 
-# Required
-variable "rancher_server_dns" {
-  type        = string
-  description = "DNS host name of the Rancher server"
-  default     = "console.centerity.com"
-}
-
-# Required
-variable "admin_password" {
-  type        = string
-  description = "Admin password to use for Rancher server bootstrap, min. 12 characters"
-  default     = "admin"
-}
-
-# Required
-variable "charts_path" {
-  default     = "./charts/infra-charts"
-  description = "The charts full path"
-}
-
-
-#
