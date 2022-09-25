@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "backend" {
-  bucket_prefix = "local-cluster"
+  bucket_prefix = "local-cluster-office"
 
   versioning {
     enabled = false
@@ -39,4 +39,3 @@ output "s3_bucket_name" {
 output "dynamodb_endpoint" {
   value = aws_dynamodb_table.backend_lock.name
 }
-
