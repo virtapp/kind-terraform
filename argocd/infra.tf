@@ -1,4 +1,4 @@
-###-infra-charts
+###---infra
 
 resource "helm_release" "influxdb" {
   namespace        = "infra"
