@@ -55,3 +55,25 @@ terraform {
     region               = "eu-west-1"
   }
 }
+
+
+
+###-backend
+
+
+provider "aws" {
+  region = "eu-west-1"
+}
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket_prefix = "local-cluster-office"
+  versioning {
+    enabled = true
+  }
+
+  force_destroy = true
+
+  // lifecycle {
+  //   prevent_destroy = true
+  // }
+}
