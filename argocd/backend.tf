@@ -43,6 +43,8 @@ output "dynamodb_endpoint" {
 
 
 
+
+
 ###-backend only s3
 
 provider "aws" {}
@@ -58,8 +60,9 @@ terraform {
 
 
 
-###-backend
 
+
+###-backend
 
 provider "aws" {
   region = "eu-west-1"
@@ -76,4 +79,15 @@ resource "aws_s3_bucket" "terraform_state" {
   // lifecycle {
   //   prevent_destroy = true
   // }
+}
+
+
+
+
+
+###-backend local
+terraform {
+  backend "local" {
+    workspace_dir = "/path/to/terraform.tfstate.d"
+  }
 }
