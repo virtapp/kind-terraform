@@ -45,7 +45,7 @@ output "dynamodb_endpoint" {
 
 
 
-###-backend only s3
+###-backend create s3 manually 
 
 provider "aws" {}
 
@@ -62,7 +62,7 @@ terraform {
 
 
 
-###-backend
+###-backend create s3 automaticly 
 
 provider "aws" {
   region = "eu-west-1"
@@ -85,9 +85,12 @@ resource "aws_s3_bucket" "terraform_state" {
 
 
 
-###-backend local
+###-backend local automaticly 
+
 terraform {
   backend "local" {
-    workspace_dir = "/path/to/terraform.tfstate.d"
+    workspace_dir = "./terraform-state"
+    path = "state/development.tfstate"
   }
 }
+
