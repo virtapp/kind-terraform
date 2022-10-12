@@ -94,3 +94,9 @@ terraform {
   }
 }
 
+
+
+####
+
+terraform -chdir=modules/ apply -auto-approve
+terraform apply -auto-approve
