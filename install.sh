@@ -21,7 +21,8 @@ sleep 5 && docker ps -a || true
              echo         "---  LOAD-TERRAFORM-FILES  ---"
              echo      "----- ............................. -----"
 sleep 5         
-terraform init && terraform plan
+terraform init || exit 1
+terraform validate || exit 1 && terraform plan
 terraform apply -auto-approve
 sleep 10 && kubectl get pods -A && sleep 5
 
