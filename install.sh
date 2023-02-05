@@ -15,7 +15,7 @@ export path_folder="argocd"
              echo         "---  Install Dependencies ---"
              echo      "----- ............................. -----"
 source dependency.sh
-sleep 5 && docker ps -a || true
+sleep 5 && sudo docker ps -a || true
 
              echo      "----- ............................. -----"
              echo         "---  LOAD-TERRAFORM-FILES  ---"
