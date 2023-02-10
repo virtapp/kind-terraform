@@ -19,8 +19,7 @@ resource "helm_release" "metallb" {
       protocol: layer2
       addresses:
       # - ${cidrhost(data.external.subnet.result.Subnet, 150)}-${cidrhost(data.external.subnet.result.Subnet, 200)}
-      # for mac
-      - 127.0.0.1 - 127.0.0.1
+      - 172.18.255.1-172.18.255.250
   EOF
   ]
   depends_on = [
