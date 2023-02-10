@@ -68,8 +68,8 @@ printf "\nYou should see 'dashboard' as a reponse below (if you do the ingress i
              echo         "---  CREATE INGRESS RULES  ---"
              echo      "----- ............................. -----"
              
-kubectl apply -f ./${path_folder}/ingress-keyclock.yaml
-kubectl apply -f ./${path_folder}/ingress-argocd.yaml
+kubectl apply -f ./${path_folder}/ingress-keyclock.yaml || true
+kubectl apply -f ./${path_folder}/ingress-argocd.yaml   || true
 sleep 5 && 
 kubectl get nodes -o wide && sleep 5
 terraform providers
