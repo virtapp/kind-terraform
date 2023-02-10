@@ -37,9 +37,9 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo add secrets-store-csi-driver https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts || true
 helm repo add kedacore https://kedacore.github.io/charts || true
 helm repo update && sleep 5
-helm fetch rancher-latest/rancher --version=v2.6.2 || true
+helm fetch rancher-latest/rancher --version=v2.7.0 || true
 kubectl create namespace cattle-system || true
-helm install rancher rancher-latest/rancher --version=v2.6.2 \
+helm install rancher rancher-latest/rancher --version=v2.7.0 \
   --namespace cattle-system \
   --set hostname=console.appflex.io \
   --set ingress.tls.source=appflex \
