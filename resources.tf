@@ -6,13 +6,12 @@ resource "helm_release" "keycloak" {
   chart      = "keycloak"
   create_namespace = true
   timeout = 300
+  values = [
+    file("argocd/keycloak-value.yaml")
+  ]
   depends_on = [helm_release.argocd,kind_cluster.default]
-
-  set {
-    name  = "service.type"
-    value = "ClusterIP"
-  }
 }
+
 
 #deploy cert manager
 resource "helm_release" "cert-manager" {
