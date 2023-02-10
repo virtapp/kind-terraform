@@ -9,7 +9,7 @@ resource "helm_release" "keycloak" {
   values = [
     file("argocd/keycloak-value.yaml")
   ]
-  depends_on = [helm_release.argocd,kind_cluster.default]
+  depends_on = [helm_release.argocd]
 }
 
 
@@ -23,7 +23,7 @@ resource "helm_release" "cert-manager" {
   create_namespace = true
   timeout = 300
   #values = [file("cert-manager-values.yaml")]
-  depends_on = [helm_release.argocd,kind_cluster.default]
+  depends_on = [helm_release.argocd]
   set {
     name  = "installCRDs"
     value = "true"
