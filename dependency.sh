@@ -1,5 +1,4 @@
 #!/bin/bash
-
 sudo apt-get update -y && sudo apt-get install docker.io -y
 sudo service docker restart
 sleep 5
