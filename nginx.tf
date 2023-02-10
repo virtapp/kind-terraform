@@ -14,6 +14,7 @@ resource "helm_release" "ingress_nginx" {
 
   namespace        = var.ingress_nginx_namespace
   create_namespace = true
+  timeout = 120
 
   values = [file("nginx_ingress_values.yaml")]
 
