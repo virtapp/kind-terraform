@@ -10,7 +10,7 @@ controller:
     enabled: true
   terminationGracePeriodSeconds: 0
   service:
-    type: "NodePort"
+    type: "LoadBalancer"
   watchIngressWithoutClass: true
   nodeSelector:
     ingress-ready: "true"
@@ -19,6 +19,6 @@ controller:
       operator: "Equal"
       effect: "NoSchedule"
   publishService:
-    enabled: false
-  extraArgs:
-    publish-status-address: "localhost"
+    enabled: true
+  #extraArgs:
+  #  publish-status-address: "localhost"
