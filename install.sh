@@ -3,10 +3,10 @@
 set -e
 cat <<EOF
 
-Typical installation of the Local Environment , the time of installation between 5-7 minutes
+Typical installation of the Local Environment 
     1. ### Install Packages
-    2. ### Create Kubernetes Cluster
-    3. ### Deploy Charts of Application  
+    2. ### Kubernetes Cluster
+    3. ### Deploy Charts 
 EOF
 sleep 5
 export path_charts="charts"
