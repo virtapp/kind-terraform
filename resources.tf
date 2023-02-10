@@ -5,6 +5,7 @@ resource "helm_release" "keycloak" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "keycloak"
   create_namespace = true
+  timeout = 300
   depends_on = [helm_release.argocd,kind_cluster.default]
 
   set {
@@ -21,6 +22,7 @@ resource "helm_release" "cert-manager" {
   version    = "1.7.1"
   namespace        = "cert-manager"
   create_namespace = true
+  timeout = 300
   #values = [file("cert-manager-values.yaml")]
   depends_on = [helm_release.argocd,kind_cluster.default]
   set {
