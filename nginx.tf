@@ -16,7 +16,7 @@ resource "helm_release" "ingress_nginx" {
   create_namespace = true
   timeout = 120
 
-  values = [file("nginx_ingress_values.yaml")]
+  values = [file("argocd/nginx_ingress_values.yaml")]
 
   depends_on = [kind_cluster.default]
 }
