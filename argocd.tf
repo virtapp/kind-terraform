@@ -7,6 +7,7 @@ resource "helm_release" "argocd" {
   namespace        = "argocd"
   version          = "4.9.7"
   create_namespace = true
+  timeout = 300
 
   values = [
     file("argocd/argo-values.yaml")
