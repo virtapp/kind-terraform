@@ -18,17 +18,17 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "5m"
 spec:
   tls:
-  - secretName: appflex
+  - secretName: virtapp
   rules:
 
-  - host: app.appflex.io
+  - host: app.virtapp.io
     http:
       paths:
       - backend:
           service:
-            name: apache
+            name: httpd-server
             port:
-              number: 80
+              number: 8080
         path: /
         pathType: Prefix
 
