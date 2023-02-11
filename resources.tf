@@ -7,7 +7,7 @@ resource "helm_release" "keycloak" {
   create_namespace = true
   timeout = 300
   values = [
-    file("argocd/keycloak-value.yaml")
+    file("config/keycloak-value.yaml")
   ]
   depends_on = [helm_release.argocd]
 }
