@@ -14,7 +14,7 @@ export path_folder="argocd"
              echo      "----- ............................. -----"
              echo         "---  Install Dependencies ---"
              echo      "----- ............................. -----"
-source dependency.sh
+source config/dependency.sh
 sleep 5 && sudo docker ps -a || true
 
              echo      "----- ............................. -----"
