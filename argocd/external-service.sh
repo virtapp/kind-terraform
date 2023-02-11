@@ -1,8 +1,9 @@
 #!/bin/bash
 
 
-MYIPV4=$(ip -4 -o addr show ens32 | awk '{print $4}' | cut -d "/" -f 1)
+MYIPV4=$(hostname -I | cut -d' ' -f1)
 DOMAIN_NAME=$1
+
 
 kubectl apply -f -  <<EOF
 apiVersion: v1
