@@ -10,7 +10,7 @@ resource "helm_release" "argocd" {
   timeout = 300
 
   values = [
-    file("argocd/argo-values.yaml")
+    file("config/argo-values.yaml")
   ]
   depends_on = [kind_cluster.default]
 }
